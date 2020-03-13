@@ -1,0 +1,478 @@
+# loading all of the start screen images
+# the method for animation these sprites is from this website:
+# https://www.simplifiedpython.net/pygame-sprite-animation-tutorial/
+
+import pygame as pg
+from pygame.sprite import Sprite
+
+
+class StartingObjects(Sprite):
+
+    def __init__(self):
+        super().__init__()
+
+        # load and resize all orange ghost images
+        self.start_screen_orange_ghost_images = []
+        self.picture = pg.image.load('images/orange_ghost_right_1.png')
+        self.picture = pg.transform.scale(self.picture, (75, 75))
+        self.start_screen_orange_ghost_images.append(self.picture)
+        self.picture = pg.image.load('images/orange_ghost_right_2.png')
+        self.picture = pg.transform.scale(self.picture, (75, 75))
+        self.start_screen_orange_ghost_images.append(self.picture)
+
+        # load and resize all blue ghost images
+        self.start_screen_blue_ghost_images = []
+        self.picture = pg.image.load('images/cyan_ghost_right_1.png')
+        self.picture = pg.transform.scale(self.picture, (75, 75))
+        self.start_screen_blue_ghost_images.append(self.picture)
+        self.picture = pg.image.load('images/cyan_ghost_right_2.png')
+        self.picture = pg.transform.scale(self.picture, (75, 75))
+        self.start_screen_blue_ghost_images.append(self.picture)
+
+        # load and resize all red ghost images
+        self.start_screen_red_ghost_images = []
+        self.picture = pg.image.load('images/red_ghost_right_1.png')
+        self.picture = pg.transform.scale(self.picture, (75, 75))
+        self.start_screen_red_ghost_images.append(self.picture)
+        self.picture = pg.image.load('images/red_ghost_right_2.png')
+        self.picture = pg.transform.scale(self.picture, (75, 75))
+        self.start_screen_red_ghost_images.append(self.picture)
+
+        # load and resize all pink ghost images
+        self.start_screen_pink_ghost_images = []
+        self.picture = pg.image.load('images/pink_ghost_right_1.png')
+        self.picture = pg.transform.scale(self.picture, (75, 75))
+        self.start_screen_pink_ghost_images.append(self.picture)
+        self.picture = pg.image.load('images/pink_ghost_right_2.png')
+        self.picture = pg.transform.scale(self.picture, (75, 75))
+        self.start_screen_pink_ghost_images.append(self.picture)
+
+        # indices for all the image arrays
+
+
+# these sprites will not move
+class IntroOrangeGhost(Sprite):
+    def __init__(self, location_x, location_y):
+        super().__init__()
+
+        self.location_x = location_x
+        self.location_y = location_y
+
+        self.start_screen_clyde_images = []
+        self.picture = pg.image.load('images/orange_ghost_right_1.png')
+        self.picture = pg.transform.scale(self.picture, (75, 75))
+        self.start_screen_clyde_images.append(self.picture)
+        self.picture = pg.image.load('images/orange_ghost_right_2.png')
+        self.picture = pg.transform.scale(self.picture, (75, 75))
+        self.start_screen_clyde_images.append(self.picture)
+
+        self.start_screen_index = 0
+        self.image = self.start_screen_clyde_images[self.start_screen_index]
+        self.rect = pg.Rect(self.location_x, self.location_y, 10, 25)
+
+    def update_clyde(self):
+        self.start_screen_index += 1
+
+        if self.start_screen_index >= len(self.start_screen_clyde_images):
+            self.start_screen_index = 0
+
+        self.image = self.start_screen_clyde_images[self.start_screen_index]
+
+
+class IntroBlueGhost(Sprite):
+    def __init__(self, location_x, location_y):
+        super().__init__()
+
+        self.location_x = location_x
+        self.location_y = location_y
+
+        self.start_screen_inkey_images = []
+        self.picture = pg.image.load('images/cyan_ghost_right_1.png')
+        self.picture = pg.transform.scale(self.picture, (75, 75))
+        self.start_screen_inkey_images.append(self.picture)
+        self.picture = pg.image.load('images/cyan_ghost_right_2.png')
+        self.picture = pg.transform.scale(self.picture, (75, 75))
+        self.start_screen_inkey_images.append(self.picture)
+
+        self.start_screen_index = 0
+        self.image = self.start_screen_inkey_images[self.start_screen_index]
+        self.rect = pg.Rect(self.location_x, self.location_y, 50, 50)
+
+    def update_inkey(self):
+        self.start_screen_index += 1
+
+        if self.start_screen_index >= len(self.start_screen_inkey_images):
+            self.start_screen_index = 0
+
+        self.image = self.start_screen_inkey_images[self.start_screen_index]
+
+
+class IntroPinkGhost(Sprite):
+    def __init__(self, location_x, location_y):
+        super().__init__()
+
+        self.location_x = location_x
+        self.location_y = location_y
+
+        self.start_screen_pinky_images = []
+        self.picture = pg.image.load('images/pink_ghost_right_1.png')
+        self.picture = pg.transform.scale(self.picture, (75, 75))
+        self.start_screen_pinky_images.append(self.picture)
+        self.picture = pg.image.load('images/pink_ghost_right_2.png')
+        self.picture = pg.transform.scale(self.picture, (75, 75))
+        self.start_screen_pinky_images.append(self.picture)
+
+        self.start_screen_index = 0
+        self.image = self.start_screen_pinky_images[self.start_screen_index]
+        self.rect = pg.Rect(self.location_x, self.location_y, 50, 50)
+
+    def update_pinky(self):
+        self.start_screen_index += 1
+
+        if self.start_screen_index >= len(self.start_screen_pinky_images):
+            self.start_screen_index = 0
+
+        self.image = self.start_screen_pinky_images[self.start_screen_index]
+
+
+class IntroRedGhost(Sprite):
+    def __init__(self, location_x, location_y):
+        super().__init__()
+
+        self.location_x = location_x
+        self.location_y = location_y
+
+        self.start_screen_blinky_images = []
+        self.picture = pg.image.load('images/red_ghost_right_1.png')
+        self.picture = pg.transform.scale(self.picture, (75, 75))
+        self.start_screen_blinky_images.append(self.picture)
+        self.picture = pg.image.load('images/red_ghost_right_2.png')
+        self.picture = pg.transform.scale(self.picture, (75, 75))
+        self.start_screen_blinky_images.append(self.picture)
+
+        self.start_screen_index = 0
+        self.image = self.start_screen_blinky_images[self.start_screen_index]
+        self.rect = pg.Rect(self.location_x, self.location_y, 50, 50)
+
+    def update_blinky(self):
+        self.start_screen_index += 1
+
+        if self.start_screen_index >= len(self.start_screen_blinky_images):
+            self.start_screen_index = 0
+
+        self.image = self.start_screen_blinky_images[self.start_screen_index]
+
+
+# this is the beginning of the sprites that will move
+# orange ghost
+class StartingClyde(Sprite):
+
+    def __init__(self, location_x, location_y):
+        super().__init__()
+
+        self.location_x = location_x
+        self.location_y = location_y
+
+        self.start_screen_clyde_images = []
+        self.picture = pg.image.load('images/orange_ghost_right_1.png')
+        self.picture = pg.transform.scale(self.picture, (75, 75))
+        self.start_screen_clyde_images.append(self.picture)
+        self.picture = pg.image.load('images/orange_ghost_right_2.png')
+        self.picture = pg.transform.scale(self.picture, (75, 75))
+        self.start_screen_clyde_images.append(self.picture)
+
+        self.start_screen_index = 0
+        self.image = self.start_screen_clyde_images[self.start_screen_index]
+        self.rect = pg.Rect(0, 0, self.location_x, self.location_y)
+
+        self.rect.x = self.rect.width
+        self.rect.y = self.rect.height
+        self.x = float(self.rect.x)
+        self.y = float(self.rect.y)
+
+    def update_clyde(self):
+        self.start_screen_index += 1
+
+        if self.start_screen_index >= len(self.start_screen_clyde_images):
+            self.start_screen_index = 0
+
+        self.image = self.start_screen_clyde_images[self.start_screen_index]
+
+        self.x += 2 * 1
+        self.rect.x = self.x
+
+
+# blue ghost
+class StartingInkey(Sprite):
+
+    def __init__(self, location_x, location_y):
+        super().__init__()
+
+        self.location_x = location_x
+        self.location_y = location_y
+
+        self.start_screen_inkey_images = []
+        self.picture = pg.image.load('images/cyan_ghost_right_1.png')
+        self.picture = pg.transform.scale(self.picture, (75, 75))
+        self.start_screen_inkey_images.append(self.picture)
+        self.picture = pg.image.load('images/cyan_ghost_right_2.png')
+        self.picture = pg.transform.scale(self.picture, (75, 75))
+        self.start_screen_inkey_images.append(self.picture)
+
+        self.start_screen_index = 0
+        self.image = self.start_screen_inkey_images[self.start_screen_index]
+        self.rect = pg.Rect(0, 0, self.location_x, self.location_y)
+
+        self.rect.x = self.rect.width
+        self.rect.y = self.rect.height
+        self.x = float(self.rect.x)
+        self.y = float(self.rect.y)
+
+    def update_inkey(self):
+        self.start_screen_index += 1
+
+        if self.start_screen_index >= len(self.start_screen_inkey_images):
+            self.start_screen_index = 0
+
+        self.image = self.start_screen_inkey_images[self.start_screen_index]
+
+        self.x += 2 * 1
+        self.rect.x = self.x
+
+
+# pink ghost
+class StartingPinky(Sprite):
+
+    def __init__(self, location_x, location_y):
+        super().__init__()
+
+        self.location_x = location_x
+        self.location_y = location_y
+
+        self.start_screen_pinky_images = []
+        self.picture = pg.image.load('images/pink_ghost_right_1.png')
+        self.picture = pg.transform.scale(self.picture, (75, 75))
+        self.start_screen_pinky_images.append(self.picture)
+        self.picture = pg.image.load('images/pink_ghost_right_2.png')
+        self.picture = pg.transform.scale(self.picture, (75, 75))
+        self.start_screen_pinky_images.append(self.picture)
+
+        self.start_screen_index = 0
+        self.image = self.start_screen_pinky_images[self.start_screen_index]
+        self.rect = pg.Rect(0, 0, self.location_x, self.location_y)
+
+        self.rect.x = self.rect.width
+        self.rect.y = self.rect.height
+        self.x = float(self.rect.x)
+        self.y = float(self.rect.y)
+
+    def update_pinky(self):
+        self.start_screen_index += 1
+
+        if self.start_screen_index >= len(self.start_screen_pinky_images):
+            self.start_screen_index = 0
+
+        self.image = self.start_screen_pinky_images[self.start_screen_index]
+
+        self.x += 2 * 1
+        self.rect.x = self.x
+
+
+# red ghost
+class StartingBlinky(Sprite):
+
+    def __init__(self, location_x, location_y):
+        super().__init__()
+
+        self.location_x = location_x
+        self.location_y = location_y
+
+        self.start_screen_blinky_images = []
+        self.picture = pg.image.load('images/red_ghost_right_1.png')
+        self.picture = pg.transform.scale(self.picture, (75, 75))
+        self.start_screen_blinky_images.append(self.picture)
+        self.picture = pg.image.load('images/red_ghost_right_2.png')
+        self.picture = pg.transform.scale(self.picture, (75, 75))
+        self.start_screen_blinky_images.append(self.picture)
+
+        self.start_screen_index = 0
+        self.image = self.start_screen_blinky_images[self.start_screen_index]
+        self.rect = pg.Rect(0, 0, self.location_x, self.location_y)
+
+        self.rect.x = self.rect.width
+        self.rect.y = self.rect.height
+        self.x = float(self.rect.x)
+        self.y = float(self.rect.y)
+
+    def update_blinky(self):
+        self.start_screen_index += 1
+
+        if self.start_screen_index >= len(self.start_screen_blinky_images):
+            self.start_screen_index = 0
+
+        self.image = self.start_screen_blinky_images[self.start_screen_index]
+
+        self.x += 2 * 1
+        self.rect.x = self.x
+
+
+class StartingPacMan(Sprite):
+
+    def __init__(self):
+        super().__init__()
+
+        self.start_screen_pacman_images_right = []
+        self.picture = pg.image.load('images/pac_man_right_1.png')
+        self.picture = pg.transform.scale(self.picture, (75, 75))
+        self.start_screen_pacman_images_right.append(self.picture)
+        self.picture = pg.image.load('images/pac_man_right_2.png')
+        self.picture = pg.transform.scale(self.picture, (75, 75))
+        self.start_screen_pacman_images_right.append(self.picture)
+        self.picture = pg.image.load('images/pac_man_right_3.png')
+        self.picture = pg.transform.scale(self.picture, (75, 75))
+        self.start_screen_pacman_images_right.append(self.picture)
+        self.picture = pg.image.load('images/pac_man_right_4.png')
+        self.picture = pg.transform.scale(self.picture, (75, 75))
+        self.start_screen_pacman_images_right.append(self.picture)
+        self.picture = pg.image.load('images/pac_man_right_5.png')
+        self.picture = pg.transform.scale(self.picture, (75, 75))
+        self.start_screen_pacman_images_right.append(self.picture)
+        self.picture = pg.image.load('images/pac_man_right_6.png')
+        self.picture = pg.transform.scale(self.picture, (75, 75))
+        self.start_screen_pacman_images_right.append(self.picture)
+
+        self.start_screen_index_right = 0
+        self.image = self.start_screen_pacman_images_right[self.start_screen_index_right]
+        self.rect = pg.Rect(0, 0, 275, 300)
+
+        self.rect.x = self.rect.width
+        self.rect.y = self.rect.height
+        self.x = float(self.rect.x)
+        self.y = float(self.rect.y)
+
+    def update_pacman(self):
+        self.start_screen_index_right += 1
+
+        if self.start_screen_index_right >= len(self.start_screen_pacman_images_right):
+            self.start_screen_index_right = 0
+
+        self.image = self.start_screen_pacman_images_right[self.start_screen_index_right]
+
+        self.x += 2 * 1
+        self.rect.x = self.x
+
+
+class StartingPacMan2(Sprite):
+
+    def __init__(self):
+        super().__init__()
+
+        self.start_screen_pacman_images_left = []
+        self.picture = pg.image.load('images/pac_man_left_1.png')
+        self.picture = pg.transform.scale(self.picture, (75, 75))
+        self.start_screen_pacman_images_left.append(self.picture)
+        self.picture = pg.image.load('images/pac_man_left_2.png')
+        self.picture = pg.transform.scale(self.picture, (75, 75))
+        self.start_screen_pacman_images_left.append(self.picture)
+        self.picture = pg.image.load('images/pac_man_left_3.png')
+        self.picture = pg.transform.scale(self.picture, (75, 75))
+        self.start_screen_pacman_images_left.append(self.picture)
+        self.picture = pg.image.load('images/pac_man_left_4.png')
+        self.picture = pg.transform.scale(self.picture, (75, 75))
+        self.start_screen_pacman_images_left.append(self.picture)
+        self.picture = pg.image.load('images/pac_man_left_5.png')
+        self.picture = pg.transform.scale(self.picture, (75, 75))
+        self.start_screen_pacman_images_left.append(self.picture)
+        self.picture = pg.image.load('images/pac_man_left_6.png')
+        self.picture = pg.transform.scale(self.picture, (75, 75))
+        self.start_screen_pacman_images_left.append(self.picture)
+
+        self.start_screen_index_left = 0
+        self.image = self.start_screen_pacman_images_left[self.start_screen_index_left]
+        self.rect = pg.Rect(0, 0, 500, 400)
+
+        self.rect.x = self.rect.width
+        self.rect.y = self.rect.height
+        self.x = float(self.rect.x)
+        self.y = float(self.rect.y)
+
+    def update_pacman(self):
+        self.start_screen_index_left += 1
+
+        if self.start_screen_index_left >= len(self.start_screen_pacman_images_left):
+            self.start_screen_index_left = 0
+
+        self.image = self.start_screen_pacman_images_left[self.start_screen_index_left]
+
+        self.x += 2 * -1
+        self.rect.x = self.x
+
+
+class Point(Sprite):
+
+    def __init__(self):
+        super().__init__()
+
+        self.start_screen_point_image = []
+        self.picture = pg.image.load('images/point.png')
+
+        self.start_screen_point_image.append(self.picture)
+
+        self.start_screen_index = 0
+        self.image = self.start_screen_point_image[self.start_screen_index]
+        self.rect = pg.Rect(0, 0, 330, 330)
+
+        self.rect.x = self.rect.width
+        self.rect.y = self.rect.height
+        self.x = float(self.rect.x)
+        self.y = float(self.rect.y)
+
+    def update_point(self):
+        self.start_screen_index += 1
+
+        if self.start_screen_index >= len(self.start_screen_point_image):
+            self.start_screen_index = 0
+
+        self.image = self.start_screen_point_image[self.start_screen_index]
+
+        self.x += 2 * 1
+        self.rect.x = self.x
+
+
+class Eyes(Sprite):
+
+    def __init__(self):
+        super().__init__()
+
+        self.start_screen_eyes_images = []
+        self.picture = pg.image.load('images/eyes_down.png')
+        self.picture = pg.transform.scale(self.picture, (100, 100))
+        self.start_screen_eyes_images.append(self.picture)
+        self.picture = pg.image.load('images/eyes_right.png')
+        self.picture = pg.transform.scale(self.picture, (100, 100))
+        self.start_screen_eyes_images.append(self.picture)
+        self.picture = pg.image.load('images/eyes_up.png')
+        self.picture = pg.transform.scale(self.picture, (100, 100))
+        self.start_screen_eyes_images.append(self.picture)
+        self.picture = pg.image.load('images/eyes_left.png')
+        self.picture = pg.transform.scale(self.picture, (100, 100))
+        self.start_screen_eyes_images.append(self.picture)
+
+        self.start_screen_index = 0
+        self.image = self.start_screen_eyes_images[self.start_screen_index]
+        self.rect = pg.Rect(0, 0, 400, 400)
+        self.rect.x = self.rect.width
+        self.rect.y = self.rect.height
+        self.x = float(self.rect.x)
+        self.y = float(self.rect.y)
+
+    def update_eyes(self):
+        self.start_screen_index += 1
+
+        if self.start_screen_index >= len(self.start_screen_eyes_images):
+            self.start_screen_index = 0
+
+        self.image = self.start_screen_eyes_images[self.start_screen_index]
+
+        self.x += 2 * -1
+        self.rect.x = self.x
